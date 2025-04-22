@@ -45,10 +45,11 @@
 ## Slide 6: Git Branching Strategy
 - **Title**: Git Branching Strategy
 - **Content**:
-  - Main branch for documentation and integration
-  - Feature branches for implementation phases
-  - Commit organization
-  - Tagging for milestones
+  - Main branch for stable, reviewed code
+  - Documentation branches (docs/mvp, docs/phase1, etc.)
+  - Implementation branches (phase0/mvp, phase1/implementation, etc.)
+  - Pull Requests with code reviews
+  - Squash merges for clean history
 - **Visual**: Git Branching Strategy Diagram
 
 ## Slide 7: Phase 0 - Requirements Refinement
@@ -163,11 +164,12 @@
 ## Slide 19: Getting Started
 - **Title**: Applying This to Your Projects
 - **Content**:
-  - Setting up your repository
-  - Creating initial documentation
-  - Defining your phases
+  - Setting up your repository with main branch
+  - Creating docs/mvp branch for documentation
+  - Creating phase0/mvp branch for implementation
+  - Creating PRs and using squash merges
   - Crafting your first AI prompts
-- **Visual**: Step-by-Step Getting Started Guide
+- **Visual**: Step-by-Step Getting Started Guide with Branch Workflow
 
 ## Slide 20: Resources
 - **Title**: Further Resources
