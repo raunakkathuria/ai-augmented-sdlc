@@ -17,6 +17,12 @@
    - Organize code into logical modules
    - Maintain clear boundaries between different parts of the application
 
+4. **Modern Tooling and Dependencies**
+   - Use the latest stable versions of libraries and tools
+   - Avoid deprecated packages and technologies
+   - Prefer actively maintained dependencies with regular updates
+   - Choose modern alternatives over legacy solutions
+
 ## Implementation Checklist
 
 For every change, ensure you:
@@ -28,6 +34,8 @@ For every change, ensure you:
 - [ ] Ensure all tests pass before submitting changes
 - [ ] Follow the project's coding guidelines and naming conventions
 - [ ] Verify your changes work on mobile devices
+- [ ] Use up-to-date, actively maintained dependencies
+- [ ] Check for and address any deprecation warnings
 
 ## Code Review Criteria
 
@@ -38,3 +46,4 @@ All code reviews should verify that changes:
 3. Follow the modular structure
 4. Are well-documented
 5. Meet the functional requirements
+6. Use modern, well-maintained dependencies
