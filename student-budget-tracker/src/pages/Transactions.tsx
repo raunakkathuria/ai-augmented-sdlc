@@ -292,7 +292,7 @@ const Transactions: React.FC = () => {
             p: 2,
             mb: 1,
             borderLeft: 6,
-            borderColor: transaction.type === 'income' ? 'success.main' : 'error.main',
+            borderColor: transaction.type === 'income' ? 'primary.main' : 'secondary.main',
             '&:last-child': { mb: 0 },
           }}
         >
@@ -316,7 +316,7 @@ const Transactions: React.FC = () => {
               <Typography
                 variant="body1"
                 align="right"
-                color={transaction.type === 'income' ? 'success.main' : 'error.main'}
+                color={transaction.type === 'income' ? 'primary.main' : 'secondary.main'}
                 fontWeight="bold"
               >
                 {transaction.type === 'income' ? '+' : '-'}${transaction.amount.toFixed(2)}

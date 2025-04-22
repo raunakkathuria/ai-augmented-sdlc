@@ -38,8 +38,8 @@ const Dashboard: React.FC = () => {
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
-                bgcolor: 'success.light',
-                color: 'success.contrastText',
+                bgcolor: 'primary.light',
+                color: 'primary.contrastText',
               }}
             >
               <Typography variant="h6">Income</Typography>
@@ -53,8 +53,8 @@ const Dashboard: React.FC = () => {
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
-                bgcolor: 'error.light',
-                color: 'error.contrastText',
+                bgcolor: 'secondary.main',
+                color: 'secondary.contrastText',
               }}
             >
               <Typography variant="h6">Expenses</Typography>
@@ -68,8 +68,8 @@ const Dashboard: React.FC = () => {
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
-                bgcolor: balance >= 0 ? 'primary.light' : 'warning.light',
-                color: balance >= 0 ? 'primary.contrastText' : 'warning.contrastText',
+                bgcolor: balance >= 0 ? 'primary.light' : 'error.light',
+                color: balance >= 0 ? 'primary.contrastText' : 'error.contrastText',
               }}
             >
               <Typography variant="h6">Balance</Typography>
@@ -91,7 +91,7 @@ const Dashboard: React.FC = () => {
                   p: 2,
                   mb: 1,
                   borderLeft: 6,
-                  borderColor: transaction.type === 'income' ? 'success.main' : 'error.main',
+                  borderColor: transaction.type === 'income' ? 'primary.main' : 'secondary.main',
                   '&:last-child': { mb: 0 },
                 }}
               >
@@ -115,7 +115,7 @@ const Dashboard: React.FC = () => {
                     <Typography
                       variant="body1"
                       align="right"
-                      color={transaction.type === 'income' ? 'success.main' : 'error.main'}
+                      color={transaction.type === 'income' ? 'primary.main' : 'secondary.main'}
                       fontWeight="bold"
                     >
                       {transaction.type === 'income' ? '+' : '-'}${transaction.amount.toFixed(2)}

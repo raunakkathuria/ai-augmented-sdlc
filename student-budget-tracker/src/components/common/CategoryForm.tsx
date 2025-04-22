@@ -30,7 +30,7 @@ const CategoryForm: React.FC<CategoryFormProps> = ({ open, onClose, category }) 
     category || {
       name: '',
       type: 'expense',
-      color: '#1976d2',
+      color: '#60B5FF',
     }
   );
 
@@ -95,7 +95,7 @@ const CategoryForm: React.FC<CategoryFormProps> = ({ open, onClose, category }) 
             label="Color"
             name="color"
             type="color"
-            value={formData.color || '#1976d2'}
+            value={formData.color || '#60B5FF'}
             onChange={handleChange}
             sx={{ mb: 2 }}
             InputLabelProps={{
