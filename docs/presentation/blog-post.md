@@ -25,9 +25,19 @@ Our workflow consists of four main phases:
 3. **Phase 1 Implementation**: Core functionality development
 4. **Phase 2 Implementation**: Enhanced features and refinements
 
-Each phase has its own Git branch, allowing for clean separation of concerns and systematic progress tracking.
+Each phase has dedicated branches for documentation and implementation, with Pull Requests and squash merges for integration.
 
-![Workflow Overview](assets/workflow-overview.png)
+For more details on the workflow, see our [Workflow Overview](../assets/workflow-overview.md).
+
+## Git Branching Strategy
+
+Our project uses a structured branching strategy:
+
+- **main**: The primary branch containing stable, reviewed code
+- **docs/mvp**: Documentation for the MVP phase
+- **phase0/mvp**: Implementation of the MVP features
+
+For each phase, we create Pull Requests when the work is complete, conduct code reviews, and use squash merges to maintain a clean commit history.
 
 ## Phase 0: Requirements Refinement
 
@@ -82,11 +92,15 @@ The application should help students track expenses, plan budgets, and gain insi
 
 ### Git Operations
 
-All documentation is committed to the main branch:
+Documentation is committed to the docs/mvp branch:
 
 ```bash
-git add docs/
+git checkout docs/mvp
+git add docs/mvp/
 git commit -m "docs: project requirement, specification and planning documents"
+git push origin docs/mvp
+# Create PR from docs/mvp to main when documentation is complete
+# Review, approve, and squash merge
 ```
 
 ## Phase 1: Quick MVP
@@ -103,7 +117,7 @@ The Minimum Viable Product (MVP) phase is about quickly implementing the core fu
 ### Creating the MVP Branch
 
 ```bash
-git checkout -b MVP
+git checkout -b phase0/mvp
 ```
 
 ### Implementing the MVP
@@ -141,18 +155,26 @@ This evaluation helps refine the requirements and implementation plan before pro
 Commit each feature separately:
 
 ```bash
+git checkout phase0/mvp
 git add src/components/ExpenseTracker.js
 git commit -m "feat: implement basic expense tracking"
 
 git add src/components/BudgetSetting.js
 git commit -m "feat: add simple budget setting functionality"
+
+git push origin phase0/mvp
+# Create PR from phase0/mvp to main when MVP is complete
+# Review, approve, and squash merge
 ```
 
 ## Phase 2: Core Implementation
 
-### Creating the Phase 1 Branch
+### Creating the Phase 1 Documentation and Implementation Branches
 
 ```bash
+git checkout -b docs/phase1
+# Create documentation for Phase 1
+
 git checkout main
 git checkout -b phase1/implementation
 ```
@@ -186,18 +208,26 @@ Please follow our coding guidelines [link] and include appropriate tests.
 Commit each logical unit of work separately:
 
 ```bash
+git checkout phase1/implementation
 git add src/components/transactions/
 git commit -m "feat: implement comprehensive transaction management"
 
 git add src/components/budget/
 git commit -m "feat: add complete budget setting and tracking"
+
+git push origin phase1/implementation
+# Create PR from phase1/implementation to main when Phase 1 is complete
+# Review, approve, and squash merge
 ```
 
 ## Phase 3: Enhanced Features
 
-### Creating the Phase 2 Branch
+### Creating the Phase 2 Documentation and Implementation Branches
 
 ```bash
+git checkout -b docs/phase2
+# Create documentation for Phase 2
+
 git checkout main
 git checkout -b phase2/implementation
 ```
@@ -216,11 +246,16 @@ With the core functionality in place, Phase 2 focuses on enhancing the user expe
 As with previous phases, commit each feature separately:
 
 ```bash
+git checkout phase2/implementation
 git add src/components/analytics/
 git commit -m "feat: add visual analytics and charts"
 
 git add src/components/forecasting/
 git commit -m "feat: implement expense forecasting"
+
+git push origin phase2/implementation
+# Create PR from phase2/implementation to main when Phase 2 is complete
+# Review, approve, and squash merge
 ```
 
 ## Best Practices for AI Collaboration

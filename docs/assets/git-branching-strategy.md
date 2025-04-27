@@ -1,73 +1,109 @@
-# Git Branching Strategy Diagram
+# Git Branching Strategy
 
-This diagram illustrates the Git branching strategy used in the AI-assisted development workflow, showing how different branches relate to each other and the progression of the project.
+This document outlines the Git branching strategy used in the AI-augmented SDLC workflow, showing how different branches relate to each other and the progression of the project.
 
-## Mermaid Diagram Code
+## Branching Strategy Overview
+
+Our project uses a structured branching strategy with separate branches for documentation and implementation:
+
+- **main**: The primary branch containing stable, reviewed code
+- **docs/mvp**: Documentation for the MVP phase
+- **phase0/mvp**: Implementation of the MVP features
+- **docs/phase1**: Documentation for Phase 1
+- **phase1/implementation**: Implementation of Phase 1 features
+- **docs/phase2**: Documentation for Phase 2
+- **phase2/implementation**: Implementation of Phase 2 features
+
+## Mermaid Diagram
 
 ```mermaid
+%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#60B5FF', 'primaryTextColor': '#fff', 'primaryBorderColor': '#4A91CC', 'lineColor': '#F16767', 'secondaryColor': '#FFECDB', 'tertiaryColor': '#FF9149'}}}%%
 gitGraph
     commit id: "Initial commit"
-    commit id: "docs: project requirements"
-    commit id: "docs: implementation plan"
-    commit id: "docs: technical specification"
-    commit id: "docs: guidelines and prompts"
-    branch MVP
-    checkout MVP
-    commit id: "feat: basic expense tracking"
-    commit id: "feat: simple budget setting"
-    commit id: "feat: minimal reporting"
-    commit id: "docs: update requirements"
+    branch docs/mvp
+    checkout docs/mvp
+    commit id: "Add requirements doc"
+    commit id: "Add technical spec"
+    commit id: "Add implementation plan"
     checkout main
-    merge MVP tag: "v0.0.2-mvp"
+    merge docs/mvp tag: "v0.1.0" type: HIGHLIGHT
+    branch phase0/mvp
+    checkout phase0/mvp
+    commit id: "Setup project structure"
+    commit id: "Implement basic UI"
+    commit id: "Add core functionality"
+    commit id: "Complete MVP features"
+    checkout main
+    merge phase0/mvp tag: "v0.2.0" type: HIGHLIGHT
+    branch docs/phase1
+    checkout docs/phase1
+    commit id: "Update docs for Phase 1"
+    checkout main
+    merge docs/phase1
     branch phase1/implementation
     checkout phase1/implementation
-    commit id: "feat: expense tracking"
-    commit id: "feat: income recording"
-    commit id: "feat: budget management"
-    commit id: "feat: reporting dashboard"
-    commit id: "test: add unit tests"
-    commit id: "docs: update documentation"
+    commit id: "Enhance core features"
+    commit id: "Add additional functionality"
+    commit id: "Improve UI/UX"
     checkout main
-    merge phase1/implementation tag: "v0.1.0-phase1"
-    branch phase2/implementation
-    checkout phase2/implementation
-    commit id: "feat: visual analytics"
-    commit id: "feat: forecasting"
-    commit id: "feat: recommendations"
-    commit id: "feat: UI improvements"
-    commit id: "docs: finalize documentation"
-    checkout main
-    merge phase2/implementation tag: "v0.1.0-phase2"
+    merge phase1/implementation tag: "v1.0.0" type: HIGHLIGHT
 ```
 
-## Description
+## Detailed Branch Descriptions
 
-The diagram shows the Git branching strategy with:
-
-1. **Main Branch**:
-   - Contains all documentation commits
+1. **main Branch**:
+   - Contains stable, reviewed code
    - Serves as the integration branch for completed phases
    - Tagged at significant milestones
+   - Never receives direct commits (only through PRs)
 
-2. **MVP Branch**:
-   - Branches off from main after documentation is complete
-   - Contains basic implementation of core features
-   - Merges back to main with tag v0.0.2-mvp
+2. **docs/mvp Branch**:
+   - Contains all MVP documentation
+   - Requirements, specifications, and planning documents
+   - Merged to main via PR with squash merge
 
-3. **Phase 1 Implementation Branch**:
-   - Branches off from main after MVP evaluation
+3. **phase0/mvp Branch**:
+   - Contains the MVP implementation
+   - Basic functionality to validate the concept
+   - Merged to main via PR with squash merge
+
+4. **docs/phase1 Branch**:
+   - Contains updated documentation for Phase 1
+   - Refined requirements based on MVP feedback
+   - Merged to main via PR with squash merge
+
+5. **phase1/implementation Branch**:
    - Contains complete implementation of core features
    - Includes tests and updated documentation
-   - Merges back to main with tag v0.1.0-phase1
+   - Merged to main via PR with squash merge
 
-4. **Phase 2 Implementation Branch**:
-   - Branches off from main after Phase 1 completion
+6. **docs/phase2 Branch**:
+   - Contains updated documentation for Phase 2
+   - Refined requirements based on Phase 1 feedback
+   - Merged to main via PR with squash merge
+
+7. **phase2/implementation Branch**:
    - Contains enhanced features and improvements
    - Includes final documentation updates
-   - Merges back to main with tag v0.1.0-phase2
+   - Merged to main via PR with squash merge
+
+## PR and Merge Process
+
+For each branch:
+1. Complete the work on the feature branch
+2. Push to the remote repository
+3. Create a Pull Request to `main`
+4. Conduct code review
+5. Address feedback
+6. Squash merge to maintain a clean commit history
+7. Delete the feature branch after merging
+
+## Benefits of This Strategy
 
 This branching strategy ensures:
-- Clean separation between development phases
-- Clear history of project evolution
+- Clean separation between documentation and implementation
+- Clear history of project evolution through squash merges
 - Ability to work on different phases independently
 - Proper versioning of significant milestones
+- Simplified code review process
+- Clean commit history in the main branch
