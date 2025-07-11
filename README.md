@@ -1,3 +1,5 @@
+# USE https://github.com/raunakkathuria/craft-coding INSTEAD OF THIS. 
+
 # Student Budget Tracker
 
 A financial management application designed specifically for university students to track expenses, plan budgets, and gain insights into their spending habits.
